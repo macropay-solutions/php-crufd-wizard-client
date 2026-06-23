@@ -1,0 +1,43 @@
+{
+  "name": "macropay-solutions/php-crufd-wizard-client",
+  "type": "library",
+  "description": "Request builder for calling projects that implement macropay-solutions/php-crufd-wizard",
+  "keywords": [
+    "crud",
+    "crufd",
+    "wizard",
+    "builder",
+    "client",
+    "initiator",
+    "free"
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "MIT",
+  "require": {
+    "php": "^7.4|^8.0",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0|^9.0|^10.5",
+    "psr/log": "^1.0 || ^2.0 || ^3.0"
+  },
+  "suggest": {
+    "macropay-solutions/php-framework": "dev-production",
+    "macropay-solutions/php-kernel": "dev-production",
+    "macropay-solutions/php-crufd-wizard": "dev-production",
+    "macropay-solutions/php-crufd-wizard-decorator": "dev-production",
+    "macropay-solutions/php-crufd-wizard-generator": "dev-production"
+  },
+  "autoload": {
+    "psr-4": {
+      "MacropaySolutions\\CrufdWizardClient\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MacropaySolutions\\CrufdWizardClient\\Test\\": "tests/"
+    }
+  }
+}
