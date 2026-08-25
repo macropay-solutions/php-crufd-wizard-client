@@ -44,9 +44,9 @@ class RequestBuilder
         QueryStringBuilder $queryStringBuilder,
         array $headers = [],
         bool $asyncCount = false,
-        bool $viaPost = false
+        string $verb = 'GET'
     ): string {
-        return $this->listInOneCall($resource, $queryStringBuilder, $headers, $viaPost);
+        return $this->listInOneCall($resource, $queryStringBuilder, $headers, $verb);
     }
 
     /**
@@ -184,20 +184,25 @@ class RequestBuilder
     }
 
     /**
+     * verb can be GET POST or QUERY
      * @throws Exception with message as json
      */
     protected function listInOneCall(
         string $resource,
         QueryStringBuilder $queryStringBuilder,
         array $headers,
-        bool $viaPost = false
+        string $verb = 'GET'
     ): string {
         try {
-            $response = $viaPost ?
-                $this->client->post(\trim($resource, '/') . '/l/i/s/t', [
-                    'headers' => \array_merge($headers, ['Content-Type' => 'application/x-www-form-urlencoded']),
-                    'body' => \http_build_query($queryStringBuilder->getAllFilters(), '', '&', PHP_QUERY_RFC3986),
-                ]) :
+            $response = $verb !== 'GET' ?
+                $this->client->request(
+                    $verb,
+                    \trim($resource, '/') . ($verb === 'POST' ? '/l/i/s/t' : ''),
+                    [
+                        'headers' => \array_merge($headers, ['Content-Type' => 'application/x-www-form-urlencoded']),
+                        'body' => \http_build_query($queryStringBuilder->getAllFilters(), '', '&', PHP_QUERY_RFC3986),
+                    ]
+                ) :
                 $this->client->get(\trim($resource, '/') . '?' . $queryStringBuilder->getUrlQueryString(), [
                     'headers' => $headers
                 ]);
