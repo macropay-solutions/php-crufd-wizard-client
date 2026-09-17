@@ -1,4 +1,4 @@
-# php-crufd-wizard-client - RetrieveQL
+# php-crufd-wizard-client - CrufdQL
 
 [![Total Downloads](https://img.shields.io/packagist/dt/macropay-solutions/php-crufd-wizard-client)](https://packagist.org/packages/macropay-solutions/php-crufd-wizard-client)
 [![Latest Stable Version](https://img.shields.io/packagist/v/macropay-solutions/php-crufd-wizard-client)](https://packagist.org/packages/macropay-solutions/php-crufd-wizard-client)
