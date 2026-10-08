@@ -11,7 +11,7 @@
     "initiator",
     "free"
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "license": "MIT",
   "require": {
